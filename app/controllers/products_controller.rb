@@ -13,8 +13,13 @@ class ProductsController < ApplicationController
 end
 
     def create
+      @product = Product.new(product_params)
 
-      ### create a product here.
+      if @product.save
+        redirect_to @product, notice: "Product Successfully Created!"
+      else
+        render :new
+      end
     end
 
 private
